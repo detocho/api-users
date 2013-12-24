@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="dpaz-pc" id="0" name="UserTests" package="api.users" tests="7" time="1.791" timestamp="2013-12-09T21:41:00">
+      <properties />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValid_WhitBlankName" time="1.494" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_WhitEmailUnique" time="0.052" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitFormatEmailInvalid" time="0.047" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitPasswordLongMinInvalid" time="0.047" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitPasswordLongMaxInvalid" time="0.033" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitFechaNacimeintoNull" time="0.038" />
+
+      <testcase classname="api.users.UserTests" name="test_creaUsuario" time="0.054" />
+
+      <system-out><![CDATA[--Output from test_UserIsNotValid_WhitBlankName--
+--Output from test_UserIsNotValidate_WhitEmailUnique--
+--Output from test_UserIsNotValidate_whitFormatEmailInvalid--
+--Output from test_UserIsNotValidate_whitPasswordLongMinInvalid--
+--Output from test_UserIsNotValidate_whitPasswordLongMaxInvalid--
+--Output from test_UserIsNotValidate_whitFechaNacimeintoNull--
+--Output from test_creaUsuario--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from test_UserIsNotValid_WhitBlankName--
+--Output from test_UserIsNotValidate_WhitEmailUnique--
+--Output from test_UserIsNotValidate_whitFormatEmailInvalid--
+--Output from test_UserIsNotValidate_whitPasswordLongMinInvalid--
+--Output from test_UserIsNotValidate_whitPasswordLongMaxInvalid--
+--Output from test_UserIsNotValidate_whitFechaNacimeintoNull--
+--Output from test_creaUsuario--
+]]></system-err>
+
+  </testsuite>
+</testsuites>
