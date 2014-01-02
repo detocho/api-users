@@ -14,6 +14,11 @@ class UrlMappings {
 			controller = "User"
 			action = [GET: 'notAllowed', POST: 'notAllowed', PUT: 'notAllowed', DELETE: 'notAllowed']
 		}
+
+		"/test"{
+			controller = "User"
+			action = "test"
+		}
 		
 		
 	}

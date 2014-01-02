@@ -19,6 +19,17 @@ class UserController {
 				render 'metodo ${method} no encotrado'
 				//[response: [message: "Method $method not allowed.", error: "method_not_allowed", status: HttpServletResponse.SC_METHOD_NOT_ALLOWED, cause: []], status: HttpServletResponse.SC_METHOD_NOT_ALLOWED]
 	}
+
+
+	def test(){
+
+		def palabra = 'david'
+		String encriptado =palabra.encodeAsEncripcion() //'TgUpvEXZLoE=' 
+		String desencriptado = encriptado.decodeEncripcion()
+		render 'david encriptado = '+encriptado
+		render '<br>desencriptado = '+desencriptado
+	}
+
 	
     def getUser() {
 		

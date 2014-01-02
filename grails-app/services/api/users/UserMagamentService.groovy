@@ -69,6 +69,11 @@ class UserMagamentService {
 		}else if (User.findByEmail(newUser.email) != null){
 				throw new NotFoundException("Email already registered", "not found")
 		}
+
+
+		if(newUser.hasErrors()){
+			//tratamos los errores
+		}
 */
 		if(!newUser.validate())
 		{
