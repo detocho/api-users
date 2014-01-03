@@ -19,6 +19,11 @@ class UrlMappings {
 			controller = "User"
 			action = "test"
 		}
+
+		"/access/$email?&$password?"{
+			controller = "User"
+			action = [GET:'access']
+		}
 		
 		
 	}

@@ -86,7 +86,7 @@ class BootStrap {
 		
 					development{
 		
-		/*
+		
 						def user01 = new User(
 							nombre:'User Registrado1',
 							apellidos:'Apellidos',
@@ -138,7 +138,7 @@ class BootStrap {
 				user03.save()
 		
 		
-		*/
+		
 					}
 					
 	}

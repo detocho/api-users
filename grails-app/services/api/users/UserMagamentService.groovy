@@ -109,5 +109,32 @@ class UserMagamentService {
 
 		return obteinedUser
 	}
+
+	def accessUser(def email, def password){
+
+		def obteinedUser = User.findByEmailAndPassword(email, password)
+		def token
+		def codigo
+		def access
+		
+		if (obteinedUser != null)
+		{
+			token = java.net.URLEncoder.encode(obteinedUser.id+'')
+			token = token.encodeAsEncripcion()
+			codigo = 'Valid Acces Token'
+		}
+		else{
+			token = ''
+			codigo = 'Invalid Acces Token'
+		}
+
+		access = [
+			'token': token,
+			'codigo':codigo
+		]
+
+		return access
+
+	}
 	
 }

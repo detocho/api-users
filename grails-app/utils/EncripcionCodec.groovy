@@ -2,6 +2,8 @@
 import java.security.*
 import javax.crypto.*
 import javax.crypto.spec.*
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 class EncripcionCodec{
 
@@ -10,13 +12,15 @@ class EncripcionCodec{
 	static encode ={ str ->
 		
 		def cipher = getCipher(Cipher.ENCRYPT_MODE)
-    	return cipher.doFinal(str.bytes).encodeBase64()
+		String result = cipher.doFinal(str.bytes).encodeBase64()
+    	return URLEncoder.encode(result)
 
 	}
 
 
 	static decode ={ str ->
 		
+		str = URLDecoder.decode(str)
 		def cipher = getCipher(Cipher.DECRYPT_MODE)
     	return new String(cipher.doFinal(str.decodeBase64()))
 

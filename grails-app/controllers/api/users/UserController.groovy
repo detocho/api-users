@@ -80,4 +80,19 @@ class UserController {
 		def modifiedUser = userMagamentService.modifyUser(id, request.JSON)
 		render modifiedUser as GSON
 	}
+
+	def access(){
+
+		def email = params.email
+		def pass = params.password
+
+		
+
+		def tokenAccess = userMagamentService.accessUser(email, pass)
+		render tokenAccess as GSON
+
+
+		
+
+	}
 }
