@@ -1,7 +1,7 @@
 dataSource {
     pooled = true
-    driverClassName = "com.mysql.jdbc.Driver"
-    //driverClassName = "org.h2.Driver"
+    //driverClassName = "com.mysql.jdbc.Driver"
+    driverClassName = "org.h2.Driver"
     //username = "sa"
     //password = ""
 }
@@ -14,19 +14,20 @@ hibernate {
 environments {
     development {
     
-    /*    
+        
 		dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
-    */
-		
+    
+		/*
 		dataSource {
 			dbCreate = "update"  //create-drop // one of 'create', 'create-drop','update'
 			username = "root"
 			password = "GIOdavid28574348"
 			url = "jdbc:mysql://localhost/detocho"
-		}
+		}*/
+    
     }
     test {
         dataSource {

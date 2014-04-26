@@ -1,0 +1,7 @@
+--Output from test_UserIsNotValid_WhitBlankName--
+--Output from test_UserIsNotValidate_WhitEmailUnique--
+--Output from test_UserIsNotValidate_whitFormatEmailInvalid--
+--Output from test_UserIsNotValidate_whitPasswordLongMinInvalid--
+--Output from test_UserIsNotValidate_whitPasswordLongMaxInvalid--
+--Output from test_UserIsNotValidate_whitFechaNacimeintoNull--
+--Output from test_creaUsuario--

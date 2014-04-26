@@ -19,16 +19,15 @@ class UserTests {
 		
 		registeredUser = new User(
 			
-			nombre:'User Registrado',
-			apellidos:'Apellidos',
-			sexo: 'M',
-			telefono:'Casa (55) 55-2345-2534',
+			name:'User Registrado',
+			sex: 'M',
+			phone:'Casa (55) 55-2345-2534',
 			email:'dpaz@detocho.com.mx',
 			password:'dtm123456',
-			estadoId: 15,
-			recibirPromociones: true,
-			status:1,
-			fechaNacimiento:new Date()-365
+			neighborhoodId: "15",
+			dateNan:new Date() - 365,
+			origin:"maxibandas",
+			picture:"http://www.google.com"
 			
 			)
 		
@@ -36,74 +35,71 @@ class UserTests {
 		
 		sampleUser = new User(
 			
-			nombre:'sample user',
-			apellidos:'ejemplo',
-			sexo:'H',
-			telefono:'cel. 55-1222-2222',
+			name:'sample user',
+			sex:'H',
+			phone:'cel. 55-1222-2222',
 			email:'ejemplo@detocho.com.mx',
 			password:'dtm123456',
-			estadoId:16,
-			recibirPromociones:false,
-			status:0,
-			fechaNacimiento:new Date()-545
+			neighborhoodId:"16",
+			dateNan:new Date() - 545,
+			origin:"maxibandas",
+			picture:"http://www.detocho.com.mx"
 			
 			)
 	}
 	
 	void test_UserIsNotValid_WhitBlankName(){
 		
-		sampleUser.nombre = ''
+		sampleUser.name = ''
 		assertFalse(sampleUser.validate())
-		assertEquals('Name is blank','blank',sampleUser.errors['nombre'])
+		assertEquals('Name is blank','blank',sampleUser.errors['name'])
 	}
 	
 	void test_UserIsNotValidate_WhitEmailUnique(){
 		
 		sampleUser.email = 'dpaz@detocho.com.mx'
 		assertFalse(sampleUser.validate())
-		assertEquals('Mail repetido','unique',sampleUser.errors['email'])
+		assertEquals('Mail exists','unique',sampleUser.errors['email'])
 	}
 	
 	void test_UserIsNotValidate_whitFormatEmailInvalid(){
 		sampleUser.email = 'ddd@asdsa'
 		assertFalse(sampleUser.validate())
-		assertEquals('Formato de email invalido','email',sampleUser.errors['email'])
+		assertEquals('Email format not valid','email',sampleUser.errors['email'])
 	}
 	
 	void test_UserIsNotValidate_whitPasswordLongMinInvalid(){
 		
 		sampleUser.password = '123'
 		assertFalse(sampleUser.validate())
-		assertEquals('Password no es valido','minSize', sampleUser.errors['password'])
+		assertEquals('Password is not valid','minSize', sampleUser.errors['password'])
 	}
 	
 	void test_UserIsNotValidate_whitPasswordLongMaxInvalid(){
 		sampleUser.password = '1234567890asdfghjkklkl'
 		assertFalse(sampleUser.validate())
-		assertEquals('Password demasiado largo','maxSize',sampleUser.errors['password'])
+		assertEquals('Password is not valid','maxSize',sampleUser.errors['password'])
 	}
 	
 	void test_UserIsNotValidate_whitFechaNacimeintoNull(){
 		
-		sampleUser.fechaNacimiento = null
+		sampleUser.dateNan = null
 		assertFalse(sampleUser.validate())
-		assertEquals('La fecha de nacimiento no puede ser nula','nullable', sampleUser.errors['fechaNacimiento'])
+		assertEquals('La fecha de nacimiento no puede ser nula','nullable', sampleUser.errors['dateNan'])
 	}
 	
 	void test_creaUsuario(){
 		
 		def ejemplo =  new User(
-		nombre:'User Registrado1',
-		apellidos:'Apellidos',
-		sexo: 'M',
-		telefono:'Casa (55) 55-2345-2534',
+		name:'User Registrado1',
+		sex: 'M',
+		phone:'Casa (55) 55-2345-2534',
 		email:'user1@detocho.com.mx',
 		password:'dtm123456',
-		estadoId: 15,
-		recibirPromociones: true,
-		status:1,
-		fechaNacimiento:new Date(),
-		ipRegistro: '192.168.1.1'
+		neighborhoodId: "15",
+		status:"active",
+		dateNan:new Date() - 645,
+		origin: "maxibandas"
 		)
 		
 		if(!ejemplo.save()){

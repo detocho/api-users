@@ -1,21 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="dpaz-pc" id="0" name="UserTests" package="api.users" tests="7" time="1.791" timestamp="2013-12-09T21:41:00">
+  <testsuite errors="0" failures="1" hostname="air-de-david.lan" id="0" name="UserControllerTests" package="api.users" tests="1" time="1.907" timestamp="2014-04-26T18:47:26">
       <properties />
 
-      <testcase classname="api.users.UserTests" name="test_UserIsNotValid_WhitBlankName" time="1.494" />
+      <testcase classname="api.users.UserControllerTests" name="testSomething" time="1.664">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at api.users.UserControllerTests.testSomething(UserControllerTests.groovy:15)
+</failure>
 
-      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_WhitEmailUnique" time="0.052" />
+      </testcase>
 
-      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitFormatEmailInvalid" time="0.047" />
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
 
-      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitPasswordLongMinInvalid" time="0.047" />
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
 
-      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitPasswordLongMaxInvalid" time="0.033" />
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="air-de-david.lan" id="1" name="UserMagamentServiceTests" package="api.users" tests="1" time="0.369" timestamp="2014-04-26T18:47:28">
+      <properties />
 
-      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitFechaNacimeintoNull" time="0.038" />
+      <testcase classname="api.users.UserMagamentServiceTests" name="testSomething" time="0.075">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at api.users.UserMagamentServiceTests.testSomething(UserMagamentServiceTests.groovy:15)
+</failure>
 
-      <testcase classname="api.users.UserTests" name="test_creaUsuario" time="0.054" />
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="air-de-david.lan" id="2" name="UserTests" package="api.users" tests="7" time="1.731" timestamp="2014-04-26T18:47:28">
+      <properties />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValid_WhitBlankName" time="1.488" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_WhitEmailUnique" time="0.037" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitFormatEmailInvalid" time="0.033" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitPasswordLongMinInvalid" time="0.034" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitPasswordLongMaxInvalid" time="0.034" />
+
+      <testcase classname="api.users.UserTests" name="test_UserIsNotValidate_whitFechaNacimeintoNull" time="0.039" />
+
+      <testcase classname="api.users.UserTests" name="test_creaUsuario" time="0.056" />
 
       <system-out><![CDATA[--Output from test_UserIsNotValid_WhitBlankName--
 --Output from test_UserIsNotValidate_WhitEmailUnique--

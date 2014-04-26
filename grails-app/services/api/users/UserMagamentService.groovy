@@ -48,17 +48,15 @@ class UserMagamentService {
 		def responseMessage = ''
 		
 		User newUser = new User(
-				nombre: jsonUser?.nombre,
-				apellidos: jsonUser?.apellidos,
-				sexo: jsonUser?.sexo,
-				telefono:jsonUser?.telefono,
+				name: jsonUser?.nombre,
+				sex: jsonUser?.sexo,
+				phone:jsonUser?.telefono,
 				email: jsonUser?.email,
 				password: jsonUser?.password,
-				estadoId: jsonUser?.estadoId,
-				recibirPromociones: jsonUser?.recibirPromociones,
-				status:jsonUser?.status,
-				ipRegistro : jsonUser?.ipRegistro,
-				fechaNacimiento: new Date().parse("MM-dd-yyyy",jsonUser?.fechaNacimiento)
+				neighborhoodId: jsonUser?.estadoId,
+				picture: jsonUser?.picture,
+				origin: jsonUser?.origen,
+				dateNan: new Date().parse("MM-dd-yyyy",jsonUser?.fechaNacimiento)
 			)	
 		/*
 		if (!newUser.validate()){
