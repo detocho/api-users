@@ -52,7 +52,7 @@ class UserController {
 			render "Usuario not found"
 		}
 		
-		render result  as GSON
+		render result   as GSON
 		
 		
 	}

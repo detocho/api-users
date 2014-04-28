@@ -3,6 +3,7 @@ import java.text.MessageFormat
 import javassist.NotFoundException
 import org.apache.ivy.plugins.conflict.ConflictManager
 import grails.converters.*
+import grails.plugin.gson.converters.GSON
 
 
 class UserMagamentService {
@@ -10,14 +11,13 @@ class UserMagamentService {
 	
     def getUser(){
 		
-		
 		def userResult = User.findAll()
 		
 		if (userResult == null){
 			throw new NotFoundException("No hay usuarios registrados", "not registered")
 		}
 		
-		return userResult  
+		userResult  
 	
 		
 	}
@@ -38,7 +38,7 @@ class UserMagamentService {
 			throw new NotFoundException("El usuario, no existe", "not found")
 		}
 		
-		return userResult
+		userResult
 		
 	}
 	
