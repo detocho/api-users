@@ -46,13 +46,29 @@ class UserController {
 				
 				result = userMagamentService.getUser(params.long('id'))
 			}
+			response.setStatus( HttpServletResponse.SC_OK)
+			response.setContentType "application/json; charset=utf-8"
+			render result as GSON
 			
 		}catch(NotFoundException e)
 		{
 			render "Usuario not found"
+			//[response: [message: badRequestException.message, error: badRequestException.error, status: HttpServletResponse.SC_BAD_REQUEST, cause: badRequestException.internalCause], status: HttpServletResponse.SC_BAD_REQUEST]
+
+		}
+		catch(Exception e){
+			//render "Cocurrio algun otro error"
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND)
+			response.setContentType "application/json; charset=utf-8"
+			def mapExcepction = [
+				message: e.message,
+				error:"El errror",
+				status: 404
+			]
+			render mapExcepction as GSON
 		}
 		
-		render result   as GSON
+		//render result   as GSON
 		
 		
 	}

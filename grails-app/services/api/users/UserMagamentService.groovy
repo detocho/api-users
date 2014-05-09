@@ -14,7 +14,7 @@ class UserMagamentService {
 		def userResult = User.findAll()
 		
 		if (userResult == null){
-			throw new NotFoundException("No hay usuarios registrados", "not registered")
+			throw new NotFoundException("No hay usuarios registrados")
 		}
 		
 		userResult  
@@ -27,7 +27,7 @@ class UserMagamentService {
 		
 		if (id == null) {
 			
-			throw new NotFoundException("el id es null", "is not must be null")
+			throw new NotFoundException("el id es null")
 			
 			
 		}
@@ -35,7 +35,7 @@ class UserMagamentService {
 		def userResult = User.findById(id)
 		
 		if (userResult == null){
-			throw new NotFoundException("El usuario, no existe", "not found")
+			throw new NotFoundException("El usuario, no existe")
 		}
 		
 		userResult
