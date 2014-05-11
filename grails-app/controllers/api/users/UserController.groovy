@@ -9,6 +9,7 @@ import static org.springframework.http.HttpMethod.*
 import grails.plugin.gson.converters.GSON
 
 
+
 class UserController {
 	
 	def userMagamentService 
@@ -16,7 +17,8 @@ class UserController {
 	def notAllowed() {
 		
 				def method = request.method
-				render 'metodo ${method} no encotrado'
+				//render 'metodo ${method} no encotrado'
+				//[response: [message: e.message, error: e.error, status: e.status, cause: e.cause], status: HttpServletResponse.SC_UNAUTHORIZED]
 				//[response: [message: "Method $method not allowed.", error: "method_not_allowed", status: HttpServletResponse.SC_METHOD_NOT_ALLOWED, cause: []], status: HttpServletResponse.SC_METHOD_NOT_ALLOWED]
 	}
 
@@ -52,7 +54,13 @@ class UserController {
 			
 		}catch(NotFoundException e)
 		{
-			render "Usuario not found"
+			//render "Usuario not found"
+			def mapExcepction = [
+				message: e.message,
+				error:"El errror",
+				status: e.status
+			]
+			render mapExcepction as GSON
 			//[response: [message: badRequestException.message, error: badRequestException.error, status: HttpServletResponse.SC_BAD_REQUEST, cause: badRequestException.internalCause], status: HttpServletResponse.SC_BAD_REQUEST]
 
 		}

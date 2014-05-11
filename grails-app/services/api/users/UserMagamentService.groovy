@@ -1,9 +1,9 @@
 package api.users
 import java.text.MessageFormat
-import javassist.NotFoundException
 import org.apache.ivy.plugins.conflict.ConflictManager
 import grails.converters.*
 import grails.plugin.gson.converters.GSON
+import users.exceptions.NotFoundException
 
 
 class UserMagamentService {
@@ -14,7 +14,7 @@ class UserMagamentService {
 		def userResult = User.findAll()
 		
 		if (userResult == null){
-			throw new NotFoundException("No hay usuarios registrados")
+			throw new NotFoundException("No hay usuarios registrados", HttpServletResponse.SC_NOT_FOUND)
 		}
 		
 		userResult  
@@ -27,7 +27,7 @@ class UserMagamentService {
 		
 		if (id == null) {
 			
-			throw new NotFoundException("el id es null")
+			throw new NotFoundException("el id es null", HttpServletResponse.SC_NOT_FOUND)
 			
 			
 		}
@@ -35,7 +35,7 @@ class UserMagamentService {
 		def userResult = User.findById(id)
 		
 		if (userResult == null){
-			throw new NotFoundException("El usuario, no existe")
+			throw new NotFoundException("El usuario, no existe", HttpServletResponse.SC_NOT_FOUND)
 		}
 		
 		userResult
