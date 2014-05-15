@@ -14,7 +14,7 @@ class UserMagamentService {
 		def userResult = User.findAll()
 		
 		if (userResult == null){
-			throw new NotFoundException("No hay usuarios registrados", HttpServletResponse.SC_NOT_FOUND)
+			throw new NotFoundException("Users not found", HttpServletResponse.SC_NOT_FOUND)
 		}
 		
 		userResult  
@@ -27,7 +27,7 @@ class UserMagamentService {
 		
 		if (id == null) {
 			
-			throw new NotFoundException("el id es null", HttpServletResponse.SC_NOT_FOUND)
+			throw new NotFoundException("You most provider userid", HttpServletResponse.SC_NOT_FOUND)
 			
 			
 		}
@@ -35,7 +35,7 @@ class UserMagamentService {
 		def userResult = User.findById(id)
 		
 		if (userResult == null){
-			throw new NotFoundException("El usuario, no existe", HttpServletResponse.SC_NOT_FOUND)
+			throw new NotFoundException("The userid not found", HttpServletResponse.SC_NOT_FOUND)
 		}
 		
 		userResult

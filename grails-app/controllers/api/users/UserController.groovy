@@ -17,11 +17,16 @@ class UserController {
 	def notAllowed() {
 		
 				def method = request.method
-				//render 'metodo ${method} no encotrado'
-				//[response: [message: e.message, error: e.error, status: e.status, cause: e.cause], status: HttpServletResponse.SC_UNAUTHORIZED]
-				//[response: [message: "Method $method not allowed.", error: "method_not_allowed", status: HttpServletResponse.SC_METHOD_NOT_ALLOWED, cause: []], status: HttpServletResponse.SC_METHOD_NOT_ALLOWED]
-	}
 
+				response.setStatus( HttpServletResponse.SC_METHOD_NOT_ALLOWED)
+				response.setContentType "application/json; charset=utf-8"
+				
+				def mapResult = [
+					message: "Method $method not allowed",
+					status: HttpServletResponse.SC_METHOD_NOT_ALLOWED
+				]
+				render mapResult as GSON
+	}
 
 	def test(){
 
@@ -35,48 +40,43 @@ class UserController {
 	
     def getUser() {
 		
-		
 		def id = params.id
 		def result
+		
 		try{
-			if (!id)
-			{
+			
+			if (!id){
 				result = userMagamentService.getUser()
-				
-			}else
-			{
-				
+			} else {
 				result = userMagamentService.getUser(params.long('id'))
 			}
+
 			response.setStatus( HttpServletResponse.SC_OK)
 			response.setContentType "application/json; charset=utf-8"
 			render result as GSON
 			
 		}catch(NotFoundException e)
 		{
-			//render "Usuario not found"
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND)
+			response.setContentType "application/json; charset=utf-8"
+
 			def mapExcepction = [
 				message: e.message,
-				error:"El errror",
 				status: e.status
 			]
 			render mapExcepction as GSON
-			//[response: [message: badRequestException.message, error: badRequestException.error, status: HttpServletResponse.SC_BAD_REQUEST, cause: badRequestException.internalCause], status: HttpServletResponse.SC_BAD_REQUEST]
 
 		}
 		catch(Exception e){
-			//render "Cocurrio algun otro error"
-			response.setStatus(HttpServletResponse.SC_NOT_FOUND)
+			
+			response.setStatus(500)
 			response.setContentType "application/json; charset=utf-8"
 			def mapExcepction = [
 				message: e.message,
-				error:"El errror",
-				status: 404
+				status: 500
 			]
 			render mapExcepction as GSON
 		}
-		
-		//render result   as GSON
 		
 		
 	}
