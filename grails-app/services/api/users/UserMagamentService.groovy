@@ -4,135 +4,138 @@ import org.apache.ivy.plugins.conflict.ConflictManager
 import grails.converters.*
 import grails.plugin.gson.converters.GSON
 import users.exceptions.NotFoundException
+import users.exceptions.ConflictException
+import users.exceptions.BadRequestException
 
 
 class UserMagamentService {
-	static transactional = true
-	
+    static transactional = true
+
     def getUser(){
-		
-		def userResult = User.findAll()
-		
-		if (userResult == null){
-			throw new NotFoundException("Users not found", HttpServletResponse.SC_NOT_FOUND)
-		}
-		
-		userResult  
-	
-		
-	}
-	
-	def getUser(def id){
-		
-		
-		if (id == null) {
-			
-			throw new NotFoundException("You most provider userid", HttpServletResponse.SC_NOT_FOUND)
-			
-			
-		}
-		
-		def userResult = User.findById(id)
-		
-		if (userResult == null){
-			throw new NotFoundException("The userid not found", HttpServletResponse.SC_NOT_FOUND)
-		}
-		
-		userResult
-		
-	}
-	
-	
-	def createUser(def jsonUser){
 
-		def responseMessage = ''
-		
-		User newUser = new User(
-				name: jsonUser?.nombre,
-				sex: jsonUser?.sexo,
-				phone:jsonUser?.telefono,
-				email: jsonUser?.email,
-				password: jsonUser?.password,
-				neighborhoodId: jsonUser?.estadoId,
-				picture: jsonUser?.picture,
-				origin: jsonUser?.origen,
-				dateNan: new Date().parse("MM-dd-yyyy",jsonUser?.fechaNacimiento)
-			)	
-		/*
-		if (!newUser.validate()){
-			//newUser.errors.allErrors.each {responseMessage += MessageFormat.format(it.defaultMessage, it.arguments) + " "}
-            //throw new BadRequestException("Invalid user data", "bad_request", responseMessage)
-            throw new NotFoundException("Email already registered", "not found")
+        def userResult = User.findAll()
 
-		}else if (User.findByEmail(newUser.email) != null){
-				throw new NotFoundException("Email already registered", "not found")
-		}
+        if (userResult == null){
+            throw new NotFoundException("Users not found")
+        }
+
+        userResult
 
 
-		if(newUser.hasErrors()){
-			//tratamos los errores
-		}
-*/
-		if(!newUser.validate())
-		{
-			newUser.errors.allErrors.each {responseMessage += MessageFormat.format(it.defaultMessage, it.arguments) + " "}
-			return responseMessage
-		}
-		else{
-		newUser.save()
-		}
+    }
 
-		return newUser
-		
-	}
+    def getUser(def id){
 
-	def modifyUser(def id, def jsonUser){
 
-		def responseMessage = ''
-		def obteinedUser = User.findById(id)
+        if (id == null) {
+            throw new NotFoundException("You most provider userid")
+        }
 
-		if (obteinedUser != null){
+        def userResult = User.findById(id)
 
-			obteinedUser.nombre = jsonUser?.nombre
-			obteinedUser.apellidos = jsonUser?.apellidos
+        if (userResult == null){
+            throw new NotFoundException("The userId not found")
+        }
 
-			if(!obteinedUser.validate()){
+        userResult
 
-					newUser.errors.allErrors.each {responseMessage += MessageFormat.format(it.defaultMessage, it.arguments) + " "}
-					return responseMessage
-				}else{
-					obteinedUser.save()
-				}
-		} 
+    }
 
-		return obteinedUser
-	}
 
-	def accessUser(def email, def password){
+    def createUser(def jsonUser){
 
-		def obteinedUser = User.findByEmailAndPassword(email, password)
-		def token
-		def codigo
-		def access
-		
-		if (obteinedUser != null)
-		{
-			token = java.net.URLEncoder.encode(obteinedUser.id+'')
-			token = token.encodeAsEncripcion()
-			codigo = 'Valid Acces Token'
-		}
-		else{
-			token = ''
-			codigo = 'Invalid Acces Token'
-		}
+        def responseMessage = ''
 
-		access = [
-			'token': token,
-			'codigo':codigo
-		]
+        User newUser = new User(
 
-		return access
+                phone:jsonUser?.phone,
+                email: jsonUser?.email,
+                password: jsonUser?.password,
+                cityId: jsonUser?.cityId,
+                origin: jsonUser?.origin
+        )
 
-	}
-	
+        if(!newUser.validate())
+        {
+            newUser.errors.allErrors.each {
+                responseMessage += MessageFormat.format(it.defaultMessage, it.arguments) + " "
+            }
+            throw new BadRequestException(responseMessage)
+
+        } else if (User.findByEmail(newUser.email) != null){
+
+            throw new ConflictException("EL email "+newUser.email+"ya esta registrado")
+
+        } else{
+
+            newUser.save()
+        }
+
+        newUser
+
+    }
+
+    def modifyUser(def id, def jsonUser){
+
+        def responseMessage = ''
+
+        if (!id) {
+            throw new NotFoundException("You most provider userid")
+        }
+        def obteinedUser = User.findById(id)
+
+        if (!obteinedUser){
+            throw new NotFoundException("The User with userId="+id+" not found")
+        }
+        // debemos agregar un validaro de json
+        obteinedUser.name = jsonUser?.name
+        obteinedUser.sex = jsonUser?.sex
+        obteinedUser.phone = jsonUser?.phone
+        obteinedUser.cityId = jsonUser?.cityId
+        obteinedUser.picture = jsonUser?.picture
+        obteinedUser.dateNan = new Date().parse("MM-dd-yyyy",jsonUser?.date_of_birth)
+        obteinedUser.dateUpdate = new Date()
+
+
+        if(!obteinedUser.validate()){
+
+            obteinedUser.errors.allErrors.each {
+                responseMessage += MessageFormat.format(it.defaultMessage, it.arguments) + " "
+            }
+            throw new BadRequestException(responseMessage)
+
+        }
+
+        obteinedUser.save()
+
+        obteinedUser
+    }
+
+    def accessUser(def email, def password){
+
+        def obteinedUser = User.findByEmailAndPassword(email, password)
+        def token
+        def codigo
+        def access
+
+        if (obteinedUser != null)
+        {
+            token = java.net.URLEncoder.encode(obteinedUser.id+'')
+            token = token.encodeAsEncripcion()
+            codigo = 'Valid Acces Token'
+        }
+        else{
+            token = ''
+            codigo = 'Invalid Acces Token'
+        }
+
+        access = [
+                'token': token,
+                'codigo':codigo
+        ]
+
+        return access
+
+    }
+
 }

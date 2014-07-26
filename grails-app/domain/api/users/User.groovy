@@ -4,31 +4,31 @@ class User {
 
     static constraints = {
 		
-		name blank:false, maxSize:45
-		sex nullable: false,  inList: ['M', 'F']
-		phone maxSize:50
-		email blank:false, email:true, unique:true
-		password blank:false, minSize:4, maxSize:20
-		neighborhoodId nullable:false
-		dateNan nullable:false
-		origin nullable:false
-		dateDeleted nullable:true
-		picture nullable:true
+		name            maxSize:45, nullable: true
+		sex             nullable: true,  inList: ['M', 'F']
+		phone           maxSize:50
+		email           blank:false, email:true, unique:true
+		password        blank:false, minSize:4, maxSize:20
+        cityId          nullable:false
+		dateNan         nullable:true
+		origin          nullable:false
+		dateDeleted     nullable:true
+		picture         nullable:true
     }
 	
-	String name 
+	String name
 	String email 
 	String password
-	Date dateNan
-	Date dateUpdate = new Date()
+    String phone
+    String cityId
+    String origin
+    Date dateUpdate = new Date()
 	Date dateRegistered = new Date()
 	Date dateDeleted
-	String origin
+    Date dateNan
 	String sex
-	String phone
-	String neighborhoodId
 	String picture
-	String status = "pending" 
+	String status = "active"
 	
 	static mapping = {
 		table "User"

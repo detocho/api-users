@@ -22,7 +22,7 @@ environments {
     */
 		
 		dataSource {
-			dbCreate = "create-drop"  //create-drop // one of 'create', 'create-drop','update'
+			dbCreate = "update"  //create-drop // one of 'create', 'create-drop','update'
 			username = "root"
 			password = ""
 			url = "jdbc:mysql://localhost/detocho"

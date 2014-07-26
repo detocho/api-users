@@ -1,12 +1,17 @@
 package users.exceptions
+import javax.servlet.http.HttpServletResponse
 
+class NotFoundException extends RuntimeException {
 
-class NotFoundException extends Exception {
-    def status 
-    def menssage
+    def status
+    def error
 
-    def NotFoundException( inMessage, inStatus) {
-        status = inStatus
-        message = inMessage
+    def NotFoundException(message) {
+
+        super(message.toString())
+        this.error = "not_found"
+        this.status = HttpServletResponse.SC_NOT_FOUND
     }
+
+
 }

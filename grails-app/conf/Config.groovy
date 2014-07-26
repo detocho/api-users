@@ -58,6 +58,7 @@ grails.exceptionresolver.params.exclude = ['password']
 
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
+grails.app.context = "/users"
 
 environments {
     development {
@@ -66,6 +67,9 @@ environments {
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
+    }
+    test{
+      
     }
 }
 
