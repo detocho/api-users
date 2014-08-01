@@ -33,6 +33,7 @@ class UserController {
         render mapResult as GSON
     }
 
+    /*
     def test(){
 
         def palabra = 'david'
@@ -41,7 +42,7 @@ class UserController {
         render 'david encriptado = '+encriptado
         render '<br>desencriptado = '+desencriptado
     }
-
+    */
 
     def getUser() {
 
@@ -103,7 +104,7 @@ class UserController {
             response.setContentType "application/json; charset=utf-8"
 
             def mapExcepction = [
-                    message: e.message,
+                    message: e.getMessage(),
                     status: e.status,
                     error: e.error
             ]
@@ -115,7 +116,7 @@ class UserController {
             response.setContentType "application/json; charset=utf-8"
 
             def mapExcepction = [
-                    message: e.message,
+                    message: e.getMessage(),
                     status: e.status,
                     error: e.error
             ]
@@ -163,7 +164,7 @@ class UserController {
             response.setContentType "application/json; charset=utf-8"
 
             def mapExcepction = [
-                    message: e.message,
+                    message: e.getMessage(),
                     status: e.status,
                     error: e.error
             ]
@@ -183,6 +184,7 @@ class UserController {
         }
     }
 
+    /*
     def access(){
 
         def email = params.email
@@ -197,4 +199,5 @@ class UserController {
 
 
     }
+    */
 }

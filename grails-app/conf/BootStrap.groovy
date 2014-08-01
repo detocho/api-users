@@ -10,12 +10,12 @@ class BootStrap {
 		User registrado = new User(
             
             name:'User Registrado',
-            sex: 'M',
+            sex: 'Hombre',
             phone:'Casa (55) 55-2345-2534',
             email:'dpaz12345@detocho.com.mx',
             password:'dtm123456',
-            cityId: "15",
-            dateNan:new Date() - 365,
+            locationId: "15",
+            dateOfBirth: new Date() - 365,
             origin:"maxibandas",
             picture:"http://www.google.com"
             
@@ -34,13 +34,13 @@ class BootStrap {
 			if (User.count() == 0) {
 				def user01 = new User(
 					name:'User Registrado1',
-					sex: 'M',
+					sex: 'Mujer',
 					phone:'Casa (55) 55-2345-2534',
 					email:'user10@detocho.com.mx',
 					password:'dtm123456',
-					cityId: "15",
+					locationId: "15",
 					origin: "test",
-					dateNan:new Date()-365,
+					dateOfBirth: new Date()-365,
 					picture:'urlpicture'
 					
 					)
@@ -49,13 +49,13 @@ class BootStrap {
 				
 				def user02 = new User(
 					name:'User Registrado2',
-					sex: 'M',
+					sex: 'Hombre',
 					phone:'Casa (55) 55-2345-2534',
 					email:'user2@detocho.com.mx',
 					password:'dtm123456',
-					cityId: "15",
+					locationId: "15",
 					origin: "test",
-					dateNan:new Date()-365,
+					dateOfBirth: new Date()-365,
 					picture:'http://www.detocho.com.mx'
 					
 					)
@@ -64,13 +64,13 @@ class BootStrap {
 				
 				def user03 = new User(
 					name:'User Registrado3',
-					sex: 'M',
+					sex: 'Hombre',
 					phone:'Casa (55) 55-2345-2534',
 					email:'user3@detocho.com.mx',
 					password:'dtm123456',
-					cityId: "15",
+					locationId: "15",
 					origin: "test",
-					dateNan:new Date()-365,
+					dateOfBirth: new Date()-365,
 					picture:'http://www.google.com'
 					)
 				

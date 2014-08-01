@@ -20,11 +20,11 @@ class UserTests {
         registeredUser = new User(
 
                 name:'David Paz',
-                sex: 'M',
+                sex: 'Mujer',
                 phone:'Casa (55) 55-2345-2534',
                 email:'dpaz@detocho.com.mx',
                 password:'dtm123456',
-                cityId: "15",
+                locationId: "15",
                 origin:"maxibandas"
 
         )
@@ -37,7 +37,7 @@ class UserTests {
                 phone:'cel. 55-1222-2222',
                 email:'gio.paz@detocho.com.mx',
                 password:'dtm123456',
-                cityId:"16",
+                locationId: "16",
                 origin:"maxibandas"
 
         )
@@ -84,9 +84,9 @@ class UserTests {
                 phone:'Casa (55) 55-2345-2534',
                 email:'user1@detocho.com.mx',
                 password:'dtm123456',
-                cityId: "15",
+                locationId: "15",
                 status:"active",
-                dateNan:new Date() - 645,
+                dateOfBirth: new Date() - 645,
                 origin: "maxibandas"
         )
 

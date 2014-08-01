@@ -15,15 +15,12 @@ class UrlMappings {
 			action = [GET: 'notAllowed', POST: 'notAllowed', PUT: 'notAllowed', DELETE: 'notAllowed']
 		}
 
-		"/test"{
-			controller = "User"
-			action = "test"
-		}
-
+    /*
 		"/access/$email?&$password?"{
 			controller = "User"
 			action = [GET:'access']
 		}
+	*/
 		
 		
 	}
